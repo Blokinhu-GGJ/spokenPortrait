@@ -1,8 +1,11 @@
 let toolbar = document.getElementById("toolbar");
 
 const GridPainter = new Painter('drawing-board', 'toolbar', 10);
+const limit = 15;
+
+
 GridPainter.setPaintColor('#000');
-GridPainter.setPaintLimit(25);
+GridPainter.setPaintLimit(limit);
 
 
 toolbar.addEventListener("click", function(event) {
@@ -12,6 +15,6 @@ toolbar.addEventListener("click", function(event) {
         let color = "#" + Math.floor(Math.random()*16777215).toString(16);
         
         GridPainter.setPaintColor(color);
-        GridPainter.setPaintLimit(100);
+        GridPainter.setPaintLimit(limit);
     }
 });

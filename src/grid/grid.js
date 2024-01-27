@@ -93,6 +93,7 @@ class Painter {
             return;
         }
         
+        console.log(this.paintedCount, this.paintLimit);
         if (this.paintedCount < this.paintLimit) {
             const cellX = Math.floor((event.clientX - this.canvasOffsetX) / this.gridSize);
             const cellY = Math.floor(event.clientY / this.gridSize);

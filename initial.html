@@ -47,15 +47,42 @@
     <button onclick="skipElimination()">Pular</button>
 </div>
 
+<div id="impostorEliminatedScreen" style="display: none;">
+    <p>O impostor foi eliminado!</p>
+    <button onclick="showResults()">Mostrar Resultados</button>
+</div>
+
+<div id="resultsScreen" style="display: none;">
+    <h2>Resultados</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Nome do Jogador</th>
+                <th>Cor</th>
+                <th>Palavra</th>
+                <th>Impostor?</th>
+            </tr>
+        </thead>
+        <tbody id="resultsTableBody">
+            <!-- Linhas da tabela serão adicionadas aqui -->
+        </tbody>
+    </table>
+</div>
+
 <script>
     let players = [];
+    let originalPlayers = [];
     let currentPlayerIndex = 0;
+    let impostorIndex = -1;
+    let impostorWord = "";
 
     function addPlayer() {
         const input = document.getElementById("playerName");
         const playerName = input.value.trim();
         if (playerName !== "") {
-            players.push({ name: playerName, impostor: false });
+            // Gera uma cor única para o jogador
+            const color = generateUniqueColor();
+            players.push({ name: playerName, color: color, word: "", impostor: false });
             input.value = "";
             updatePlayerList();
         }
@@ -66,10 +93,15 @@
         playerListDiv.innerHTML = "";
         players.forEach(player => {
             const playerNameSpan = document.createElement("span");
-            playerNameSpan.textContent = player.name;
+            playerNameSpan.textContent = player.name + " (Cor: " + player.color + ")";
             playerListDiv.appendChild(playerNameSpan);
             playerListDiv.appendChild(document.createElement("br")); // Adiciona nova linha
         });
+    }
+
+    function generateUniqueColor() {
+        // Gera uma cor aleatória hexadecimal
+        return '#' + Math.floor(Math.random() * 16777215).toString(16);
     }
 
     function startGame() {
@@ -77,8 +109,22 @@
             alert("Minimum of 3 players required to start the game.");
             return;
         }
-        const impostorIndex = Math.floor(Math.random() * players.length);
+        impostorIndex = Math.floor(Math.random() * players.length);
         players[impostorIndex].impostor = true;
+
+        // Define a palavra para desenhar
+        let words = ["Cachorro", "Gato"];
+        
+        players.map(player => {
+            if(player.impostor){
+              player.word = words[1]
+            } else {
+              player.word = words[0]
+            }
+            return player
+        });
+
+        originalPlayers = [ ... players ]
 
         // Oculta a tela inicial
         document.getElementById("initialScreen").style.display = "none";
@@ -98,13 +144,7 @@
         // Exibe o nome do jogador atual
         document.getElementById("currentPlayerName").textContent = "Jogador: " + players[currentPlayerIndex].name;
 
-        // Simula a geração de uma palavra aleatória (substitua esta lógica pela sua lógica real)
-        const words = ["Cachorro", "Gato", "Casa", "Carro", "Bola"];
-        const randomIndex = Math.floor(Math.random() * words.length);
-        const wordToDraw = words[randomIndex];
-
-        // Exibe a palavra para desenhar
-        document.getElementById("wordToDraw").textContent = "Palavra para desenhar: " + wordToDraw;
+        document.getElementById("wordToDraw").textContent = "Palavra para desenhar: " + players[currentPlayerIndex].word;
     }
 
     function nextPlayer() {
@@ -138,13 +178,20 @@
         const selectedIndex = playerSelect.value;
         
         // Remove o jogador selecionado da lista
-        players.splice(selectedIndex, 1);
+        var eliminated = players.splice(selectedIndex, 1);
         
-        // Volta para a tela de transição
-        document.getElementById("eliminationScreen").style.display = "none";
-        document.getElementById("transitionScreen").style.display = "block";
-        document.getElementById("playerTurnMessage").textContent = "Jogador eliminado!";
-        
+        // Verifica se o jogador eliminado é o impostor
+        if (eliminated[0].impostor) {
+            // Mostra a tela especial para o impostor eliminado
+            document.getElementById("eliminationScreen").style.display = "none";
+            document.getElementById("impostorEliminatedScreen").style.display = "block";
+        } else {
+            // Volta para a tela de transição
+            document.getElementById("eliminationScreen").style.display = "none";
+            document.getElementById("transitionScreen").style.display = "block";
+            document.getElementById("playerTurnMessage").textContent = "Jogador eliminado!";
+        }
+
         // Reinicia o índice do jogador atual se necessário
         if (currentPlayerIndex >= players.length) {
             currentPlayerIndex = 0;
@@ -156,6 +203,32 @@
         document.getElementById("eliminationScreen").style.display = "none";
         document.getElementById("transitionScreen").style.display = "block";
         document.getElementById("playerTurnMessage").textContent = "Escolha um jogador para eliminar ou pular a eliminação!";
+    }
+
+    function showResults() {
+        // Preenche a tabela com os resultados
+        const resultsTableBody = document.getElementById("resultsTableBody");
+        resultsTableBody.innerHTML = "";
+        originalPlayers.forEach(player => {
+            const row = document.createElement("tr");
+            const playerNameCell = document.createElement("td");
+            playerNameCell.textContent = player.name;
+            row.appendChild(playerNameCell);
+            const colorCell = document.createElement("td");
+            colorCell.textContent = player.color;
+            row.appendChild(colorCell);
+            const wordCell = document.createElement("td");
+            wordCell.textContent = player.word;
+            row.appendChild(wordCell);
+            const impostorCell = document.createElement("td");
+            impostorCell.textContent = player.impostor ? "Sim" : "Não";
+            row.appendChild(impostorCell);
+            resultsTableBody.appendChild(row);
+        });
+
+        // Mostra a tela de resultados
+        document.getElementById("impostorEliminatedScreen").style.display = "none";
+        document.getElementById("resultsScreen").style.display = "block";
     }
 </script>
 </body>

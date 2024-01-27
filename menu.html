@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nome do Seu Jogo</title>
+    <title>Imagens em Movimento</title>
     <style>
         body {
             background-color: #1a1a1a;
@@ -12,21 +12,15 @@
             text-align: center;
             margin: 0;
             padding: 0;
+            overflow: hidden; /* Para esconder as imagens que ultrapassam as bordas */
         }
 
-        #menu-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
+        .random-image {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            transition: transform 0.5s ease-in-out;
         }
-
-        #game-title {
-            font-size: 2em;
-            margin-bottom: 20px;
-        }
-
         .menu-button {
             display: inline-block;
             padding: 10px 20px;
@@ -44,37 +38,49 @@
             background-color: #45a049;
         }
 
-        #painter-icons {
-            display: flex;
-            justify-content: space-around;
-            width: 200px;
-            margin-top: 30px;
-        }
-
-        .painter-icon {
-            width: 40px;
-            height: 40px;
-            background-color: #4CAF50;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 10px;
-        }
-
-        .painter-icon img {
-            width: 80%;
-            height: 80%;
-            border-radius: 50%;
-        }
     </style>
 </head>
 <body>
-    <div id="menu-container">
-        <h1 id="game-title">Retrato Hablado</h1>
-        
-        <a href="initial.html" class="menu-button">Iniciar Jogo</a>
-    
-    </div>
+    <script>
+        // Função para obter uma posição aleatória dentro da tela
+        function getRandomPosition(max) {
+            return Math.floor(Math.random() * max);
+        }
+
+        // Função para animar o movimento das imagens
+        function moveImages() {
+            const images = document.querySelectorAll('.random-image');
+
+            images.forEach(image => {
+                const maxX = window.innerWidth - image.clientWidth;
+                const maxY = window.innerHeight - image.clientHeight;
+
+                // Gera uma posição aleatória
+                const randomX = getRandomPosition(maxX);
+                const randomY = getRandomPosition(maxY);
+
+                // Atualiza a posição da imagem
+                image.style.transform = `translate(${randomX}px, ${randomY}px)`;
+            });
+
+            // Chama a função novamente após um intervalo de tempo
+            setTimeout(moveImages, 2000);
+        }
+
+        // Inicia a animação quando a página é carregada
+        window.onload = moveImages;
+    </script>
+
+    <a href="initial.html" class="menu-button">Iniciar Jogo</a>
+
+    <!-- Adicione suas imagens aqui -->
+    <img src=".\image\ht43h465yger.png" class="random-image" style="top: 50px; left: 100px;">
+    <img src=".\image\IMG_3997.jpg" class="random-image" style="top: 150px; left: 200px;">
+    <img src=".\image\trehgyu5yu4oyt9eu.png" class="random-image" style="top: 250px; left: 300px;">
+    <img src=".\image\8t94f5ftuto43ihrj.png" class="random-image" style="top: 350px; left: 400px;">
+    <img src=".\image\e4gyer6hr6tuht7it.png" class="random-image" style="top: 450px; left: 500px;">
+    <img src=".\image\fretwf5tgery6uhr6thur.png" class="random-image" style="top: 550px; left: 600px;">
+    <img src=".\image\gj849ftkgiorejgyoitd.png" class="random-image" style="top: 650px; left: 700px;">
 </body>
 </html>
+    

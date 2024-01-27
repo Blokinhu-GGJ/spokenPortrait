@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shape Canvas Game</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            height: 100svh;
+            width: 100vw;
+            width: 100svw;
+            overflow: hidden;
+        }
+
+        body-wrapper {
+            height: 96vh;
+            height: 96svh;
+            width: 96vw;
+            width: 96svw;
+            padding-top: 2vh;
+            padding-bottom: 2vh;
+            padding-right: 2vw;
+            padding-left: 2vw;
+            padding-top: 2svh;
+            padding-bottom: 2svh;
+            padding-right: 2svw;
+            padding-left: 2svw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: start;
+        }
+
+        #shapeDeck {
+            display: flex;
+            width: 96svw;
+            justify-content: space-between;
+            height: 18vw;
+            margin-bottom: 1vw;
+            margin-top: 1vw;
+
+            background-color: antiquewhite;
+        }
+
+        .shapeSlot {
+            border: 2px solid #000;
+            width: 18vw;
+            height: 18vw;
+            background-color: lightblue;
+        }
+
+        .draggable {
+            cursor: grab;
+        }
+
+        img {
+            width: 18vw;
+            height: 18vw;
+            filter: invert(100%);
+        }
+
+        #canvasArea {
+            box-sizing: border-box;
+            border: 2px solid #000;
+            width: 96vw;
+            width: 96svw;
+            height: 50vh;
+            height: 50vh;
+            background-color: azure;
+        }
+
+        #gameSection {
+            background-color: azure;
+        }
+    </style>
+</head>
+
+<body>
+    <body-wrapper>
+        <div id="canvasArea"></div>
+
+        <div id="shapeDeck">
+            <div id="slot1" class="shapeSlot empty"></div>
+            <div id="slot2" class="shapeSlot empty"></div>
+            <div id="slot3" class="shapeSlot empty"></div>
+            <div id="slot4" class="shapeSlot empty"></div>
+            <div id="slot5" class="shapeSlot empty"></div>
+        </div>
+    </body-wrapper>
+
+    <div id="gameSection">
+
+    </div>
+
+    <script src="game.js"></script>
+</body>
+
+</html>

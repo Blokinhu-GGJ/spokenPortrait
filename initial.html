@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selecione o Número de Jogadores</title>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        #player-selection-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #game-title {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .player-button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 1.2em;
+            background-color: #4CAF50;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .player-button:hover {
+            background-color: #45a049;
+        }
+
+        #painter-icons {
+            display: flex;
+            justify-content: space-around;
+            width: 200px;
+            margin-top: 30px;
+        }
+
+        .painter-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #4CAF50;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 10px;
+        }
+
+        .painter-icon img {
+            width: 80%;
+            height: 80%;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div id="player-selection-container">
+        <h1 id="game-title">Selecione o Número de Jogadores</h1>
+        
+        <a href="#" class="player-button" onclick="selectPlayers(3)">3 Jogadores</a>
+        <a href="#" class="player-button" onclick="selectPlayers(4)">4 Jogadores</a>
+        <a href="#" class="player-button" onclick="selectPlayers(5)">5 Jogadores</a>
+        <a href="#" class="player-button" onclick="selectPlayers(6)">6 Jogadores</a>
+
+    <script>
+        function selectPlayers(numberOfPlayers) {
+            // Adicione aqui a lógica para iniciar o jogo com o número de jogadores selecionado.
+            alert("Iniciar jogo com " + numberOfPlayers + " jogadores");
+        }
+    </script>
+</body>
+</html>

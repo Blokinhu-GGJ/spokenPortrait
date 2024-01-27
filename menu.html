@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nome do Seu Jogo</title>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        #menu-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #game-title {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .menu-button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 1.2em;
+            background-color: #4CAF50;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .menu-button:hover {
+            background-color: #45a049;
+        }
+
+        #painter-icons {
+            display: flex;
+            justify-content: space-around;
+            width: 200px;
+            margin-top: 30px;
+        }
+
+        .painter-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #4CAF50;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 10px;
+        }
+
+        .painter-icon img {
+            width: 80%;
+            height: 80%;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div id="menu-container">
+        <h1 id="game-title">Retrato Hablado</h1>
+        
+        <a href="initial.html" class="menu-button">Iniciar Jogo</a>
+    
+    </div>
+</body>
+</html>

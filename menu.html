@@ -41,6 +41,11 @@
     </style>
 </head>
 <body>
+    <audio controls loop>
+        <source src=".\sound\trilha_initial.mp3" type="audio/mp3">
+        Seu navegador não suporta o elemento de áudio.
+    </audio>
+
     <script>
         // Função para obter uma posição aleatória dentro da tela
         function getRandomPosition(max) {
@@ -68,7 +73,13 @@
         }
 
         // Inicia a animação quando a página é carregada
-        window.onload = moveImages;
+        window.onload = function() {
+            moveImages();
+
+            // Inicia a reprodução da trilha sonora quando a página é carregada
+            const audio = document.querySelector('audio');
+            audio.play();
+        };
     </script>
 
     <a href="initial.html" class="menu-button">Iniciar Jogo</a>

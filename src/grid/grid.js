@@ -1,9 +1,9 @@
 class Painter {
-    constructor (canvasId, toolbarId, cellCountId, gridSize, paintLimit) {
+    constructor (canvasId, toolbarId, gridSize, paintLimit) {
         // HTML ref
         this.canvas = document.getElementById(canvasId);
         this.toolbar = document.getElementById(toolbarId);
-        this.cellCount = document.getElementById(cellCountId);
+
 
         this.ctx = this.canvas.getContext('2d');
 
@@ -39,7 +39,7 @@ class Painter {
     setPaintLimit(limit) {
         this.paintLimit = limit;
         this.paintedCount = 0;
-        this.cellCount.textContent = `${this.paintedCount}`;
+        this.ctx.clearRect(0, 0, this.canvas.width, 50);
     }
 
     setPaintColor(color) {
@@ -100,7 +100,7 @@ class Painter {
             if (!this.paintedCells[cellY][cellX]) {
                 this.paintedCells[cellY][cellX] = true;
                 this.paintedCount++;
-                this.cellCount.textContent = `${this.paintedCount}`;
+                this.drawPaintBar();
             }
         
             this.ctx.fillStyle = this.ctx.strokeStyle;
@@ -125,6 +125,21 @@ class Painter {
             this.ctx.lineTo(this.canvas.width, y);
             this.ctx.stroke();
         }
+    }
+
+    drawPaintBar() {
+        const remainingPaintPercentage = (this.paintLimit - this.paintedCount) / this.paintLimit * 100;
+
+        // Clear any previous bar
+        this.ctx.clearRect(0, 0, this.canvas.width, 50);
+
+        // Barra
+        this.ctx.fillStyle = '#ccc  ';
+        this.ctx.fillRect(0, 0, this.canvas.width * (remainingPaintPercentage / 100), 50);
+
+        // Texto
+        this.ctx.fillStyle = 'black';
+        this.ctx.fillText(`Tinta restante: ${remainingPaintPercentage.toFixed(2)}mL`, 10, 30);
     }
 }
 

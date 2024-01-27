@@ -1,8 +1,8 @@
 let toolbar = document.getElementById("toolbar");
 
-const GridPainter = new Painter('drawing-board', 'toolbar', 'paintedCount', 10);
+const GridPainter = new Painter('drawing-board', 'toolbar', 10);
 GridPainter.setPaintColor('#000');
-GridPainter.setPaintLimit(100);
+GridPainter.setPaintLimit(25);
 
 
 toolbar.addEventListener("click", function(event) {

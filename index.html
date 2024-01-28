@@ -13,6 +13,19 @@
         }
     </style>
     <script src="game.js"></script>
+    <script>
+        function game_music() {
+            myAudio.play();
+            if (myAudio.paused == true) {
+                myAudio.play();
+            }
+        }
+        let myAudio = new Audio();
+
+        myAudio.src = './sound/trilha_initial.mp3';
+
+        window.onload = setInterval(game_music, 1000 / 10); //10fps
+    </script>
 
 </head>
 
@@ -99,6 +112,8 @@
             </div>
         </div>
     </div>
+
+
 
     <script>
         let players = [];

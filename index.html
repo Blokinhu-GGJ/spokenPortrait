@@ -52,8 +52,9 @@
                 <select id="playerSelect">
                     <!-- Opções de jogador serão adicionadas aqui -->
                 </select>
-                <div style="display: flex; flex-direction: row; align-items: center; justify-content: center; width: 100%">
-                <button onclick=" eliminatePlayer()">Eliminar</button>
+                <div
+                    style="display: flex; flex-direction: row; align-items: center; justify-content: center; width: 100%">
+                    <button onclick=" eliminatePlayer()">Eliminar</button>
                     <button onclick="skipElimination()">Pular</button>
                 </div>
             </div>
@@ -81,6 +82,21 @@
             </div>
 
         </body-wrapper>
+    </div>
+
+    <div id="npcDialog">
+        <img id="sadPudding" src="img/pudding1.png">
+        <div id="dialogTextWrapper">
+            <div id="dialogText">
+                Estou tão triste. Preciso de novos amigos que me ajudem a seguir meu sonho de ser um grande
+                artista! Vocês poderiam me ajudar com um desenho?
+            </div>
+            <div style="display: flex; flex-direction: row; align-items: center; justify-content: end;">
+                <button id="dialogButton" onclick="closeDialog()">
+                    Sim
+                </button>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -116,7 +132,7 @@
 
         function generateUniqueColor() {
             // Gera uma cor aleatória hexadecimal
-            return '#' + Math.floor(Math.random() * 16777215).toString(16);
+            return '#' + Math.floor(50 + Math.random() * 150).toString(16) + Math.floor(50 + Math.random() * 150).toString(16) + Math.floor(50 + Math.random() * 150).toString(16);
         }
 
         function startGame() {
@@ -149,7 +165,7 @@
             document.getElementById("gameScreen").style.display = "flex";
             document.getElementById("playerTurnMessage").textContent = "É a vez do jogador " + players[currentPlayerIndex].name;
 
-            initializeCanvas(players[curretPlayerIndex].color);
+            initializeCanvas('#000000');
         }
 
         function confirmTurn() {
@@ -165,7 +181,7 @@
             document.getElementById("currentPlayerName").textContent = "Jogador: " + players[currentPlayerIndex].name;
 
             document.getElementById("wordToDraw").textContent = "Palavra para desenhar: " + players[currentPlayerIndex].word;
-            initializeCanvas(players[currentPlayerIndex].color);
+            initializeCanvas((players[currentPlayerIndex].color));
         }
 
         function nextPlayer() {
@@ -210,6 +226,7 @@
                 // Mostra a tela especial para o impostor eliminado
                 document.getElementById("eliminationScreen").style.display = "none";
                 document.getElementById("impostorEliminatedScreen").style.display = "flex";
+                popDialog('Muahahahah! Que desenho horrível! Você achou mesmo que ajudaria?! Vocês são péssimos! Acham mesmo que isso ficou bom?', 'pudding2.png', popFinalDialog);
                 document.getElementById("gameScreen").style.display = "flex";
             } else {
                 // Volta para a tela de transição

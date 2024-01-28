@@ -1,3 +1,9 @@
+@font-face {
+    font-family: 'CustomFont'; /* Provide a name for your custom font */
+    src: url('GloriaHallelujah-Regular.ttf') format('truetype'); /* Path to your font file */
+    /* You can also specify other font properties here, such as font-weight and font-style */
+}
+
 body {
     margin: 0;
     height: 100vh;
@@ -258,6 +264,7 @@ p {
 
 .gameScreen span {
     color: #ffffff;
+    background-color: white;
     font-weight: bold;
     width: 60vw;
     font-size: 3vh;
@@ -277,5 +284,59 @@ p {
         max-width: 80vh;
         max-height: 100vh;
     }
-    
+}
+
+#npcDialog img {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 70svw;
+    width: 70svw;
+    height: 70svw;
+    height: 70svw;
+    filter: none;
+}
+
+#npcDialog {
+    width: 100svw;
+    width: 100svw;
+    height: 100svh;
+    height: 100svh;
+    position: absolute;
+    background-color: #00000088;
+}
+
+#dialogTextWrapper {
+    border-radius: 5vw;
+}
+
+#dialogTextWrapper {
+    position: absolute;
+    left: 5vw;
+    margin-right: 15vw;
+
+    padding: 2vw;
+    left: 5svw;
+    right: 5svw;
+    bottom: 30svh;
+
+    background-color: white;
+    border-top: 0.5vw solid #372d3e;
+    border-left: 0.5vw solid #372d3e;
+    border-right: 0.5vw solid #372d3e;
+    border-bottom: 0.5vw solid #372d3e;
+}
+
+#dialogTextWrapper button {
+    margin-right: 5vw;
+    font-size: 3vh;
+    border-radius: 2vh;
+    padding-left: 4vw;
+    padding-right: 4vw;
+    margin-bottom: 1vh;
+}
+
+#dialogText {
+    color: #372d3e;
+    padding-bottom: 1vh;
 }

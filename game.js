@@ -22,34 +22,34 @@ function initializeCanvas(playerColor = '#000000') {
         possibleImages.push('img' + i);
     }
 
- 
+
 
     fillSlots();
 
     function fillSlots() {
         for (let i = 0; i < 5; i++) {
             //if (slots[i].classList.contains('empty')) {
-                while (slots[i].firstChild) {
-                    slots[i].removeChild(slots[i].firstChild);
-                }
-                slots[i].classList.add('empty');
-                let newImage = false;
-                while (newImage == false) {
-                    let rand = Math.random();
-                    let randIndex = Math.floor(rand * possibleImages.length);
-                    newImage = true;
-                    for (let j = 0; j < 5; j++) {
-                        if (playerImages[j] == possibleImages[randIndex]) {
-                            newImage = false;
-                        }
-                    }
-                    if (newImage) {
-                        playerImages[i] = (possibleImages[randIndex]);
-                    }
-                    else {
+            while (slots[i].firstChild) {
+                slots[i].removeChild(slots[i].firstChild);
+            }
+            slots[i].classList.add('empty');
+            let newImage = false;
+            while (newImage == false) {
+                let rand = Math.random();
+                let randIndex = Math.floor(rand * possibleImages.length);
+                newImage = true;
+                for (let j = 0; j < 5; j++) {
+                    if (playerImages[j] == possibleImages[randIndex]) {
                         newImage = false;
                     }
                 }
+                if (newImage) {
+                    playerImages[i] = (possibleImages[randIndex]);
+                }
+                else {
+                    newImage = false;
+                }
+            }
             //}
         }
     }
@@ -200,7 +200,7 @@ function initializeCanvas(playerColor = '#000000') {
             draggedImage.style.top = pageY - offsetY + 'px';
         }
 
-        function resetPosition(){
+        function resetPosition() {
             console.log('Saved!!!!');
             document.removeEventListener('mouseup', resetPosition);
             draggedImage.style.position = 'relative';
@@ -209,11 +209,11 @@ function initializeCanvas(playerColor = '#000000') {
             draggedImage.onmouseup = null;
             document.removeEventListener('mousemove', onMouseMove);
         }
-    
+
         function onMouseMove(event) {
             moveAt(event.pageX, event.pageY);
         }
-    
+
 
         // Move the image on mousemove
         document.addEventListener('mousemove', onMouseMove);
@@ -273,3 +273,25 @@ function initializeCanvas(playerColor = '#000000') {
         e.preventDefault();
     });
 };
+
+function closeDialog() {
+    const dialog = document.getElementById('npcDialog');
+    dialog.style.display = 'none';
+}
+
+function popDialog(text, figure, buttonFunction = closeDialog) {
+    const dialogText = document.getElementById('dialogText')
+    const dialog = document.getElementById('npcDialog');
+    dialog.style.display = 'flex';
+    dialogText.textContent = text;
+    const image = document.getElementById('sadPudding');
+    image.src = 'img/' + figure;
+    const dialogButton = document.getElementById('dialogButton');
+    dialogButton.onclick = buttonFunction;
+}
+
+function popFinalDialog() {
+    console.log('popped final dialog');
+    closeDialog();
+    popDialog('HAHAHAHA! Vocês me fazem rir!', 'pudding2.png')
+}

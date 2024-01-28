@@ -1,0 +1,188 @@
+body {
+    margin: 0;
+    height: 100vh;
+    height: 100svh;
+    width: 100vw;
+    width: 100svw;
+    overflow: hidden;
+}
+
+body-wrapper {
+    height: 96vh;
+    height: 96svh;
+    width: 96vw;
+    width: 96svw;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    padding-right: 2vw;
+    padding-left: 2vw;
+    padding-top: 2svh;
+    padding-bottom: 2svh;
+    padding-right: 2svw;
+    padding-left: 2svw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+}
+
+#shapeDeck {
+    display: flex;
+    width: 96svw;
+    justify-content: space-between;
+    height: 18vw;
+    margin-bottom: 1vw;
+    margin-top: 1vw;
+
+    background-color: lightblue;
+}
+
+.shapeSlot {
+    border: 0.5vw solid #000;
+    box-shadow: inset 0 0 5px #000000;
+    border-radius: 5%;
+    width: 18vw;
+    height: 18vw;
+    background-color: lightblue;
+    overflow: hidden;
+}
+
+@keyframes smoothSwing {
+
+    0%,
+    100% {
+        transform: rotate(-2deg);
+    }
+
+    50% {
+        transform: rotate(2deg);
+    }
+}
+
+.draggable {
+    cursor: grab;
+}
+
+img {
+    touch-action: none;
+    width: 18vw;
+    height: 18vw;
+    filter:
+        opacity(0.2)
+        /* To apply the color all over the image */
+        drop-shadow(0 0 0 red)
+        /* To apply my costum color */
+        drop-shadow(0 0 0 red)
+        /* To apply my costum color */
+        drop-shadow(0 0 0 red)
+        /* To apply my costum color */
+        drop-shadow(0 0 0 red)
+        /* To apply my costum color */
+        drop-shadow(0 0 0 red)
+        /* To apply my costum color */
+}
+
+
+.img-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    touch-action: none;
+    width: 18vw;
+    height: 18vw;
+}
+
+.animation-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 50%;
+}
+
+.img-wrapper.draggable .animation-wrapper {
+    touch-action: none;
+    animation: smoothSwing 1s infinite ease-in-out;
+}
+
+#canvasArea {
+    box-sizing: border-box;
+    border: 0.5vw solid #000;
+    box-shadow: inset 0 0 5px #000000;
+    border-radius: 2%;
+    width: 96vw;
+    width: 96svw;
+    height: 50vh;
+    height: 50vh;
+    background-color: azure;
+    overflow: hidden;
+}
+
+#gameSection {
+    background-color: azure;
+}
+
+
+
+#initialScreen button {
+    width: 40vw;
+}
+
+.gameScreen {
+    width: 100%;
+    height: 20vh;
+    height: 20svh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#initialScreen {
+    width: 100%;
+    height: 100%;
+    background-color: lightblue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+}
+
+.gameScreen button {
+    width: 40vw;
+    height: 10vw;
+    margin: 2vw;
+    background-color: rgb(157, 198, 212);
+    border: none;
+    border: 0.5vw solid rgb(112, 150, 162);
+    border-radius: 1vw;
+    color: rgb(57, 77, 84);
+    font-weight: bold;
+}
+
+.gameScreen input {
+    border: 0.5vw solid rgb(112, 150, 162);
+    color: rgb(57, 77, 84);
+    font-weight: bold;
+    width: 60vw;
+    margin: 5vw;
+    margin-top: 10vh;
+    font-size: 5vw;
+    border-radius: 1vw;
+}
+
+#playerList {
+    margin-top: 5vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start
+}
+
+.gameScreen span {
+    color: rgb(57, 77, 84);
+    font-weight: bold;
+    width: 60vw;
+    font-size: 5vw;
+    border-radius: 1vw;
+}

@@ -69,7 +69,7 @@
                     <thead>
                         <tr>
                             <th>Nome do Jogador</th>
-                            <th>Cor</th>
+                            <!-- <th>Cor</th> -->
                             <th>Palavra</th>
                             <th>Impostor?</th>
                         </tr>
@@ -107,7 +107,8 @@
             playerListDiv.innerHTML = "";
             players.forEach(player => {
                 const playerNameSpan = document.createElement("span");
-                playerNameSpan.textContent = player.name + " (Cor: " + player.color + ")";
+                playerNameSpan.textContent = player.name;// + " (Cor: " + player.color + ")";
+                playerNameSpan.style.color = player.color;
                 playerListDiv.appendChild(playerNameSpan);
                 playerListDiv.appendChild(document.createElement("br")); // Adiciona nova linha
             });
@@ -148,7 +149,7 @@
             document.getElementById("gameScreen").style.display = "flex";
             document.getElementById("playerTurnMessage").textContent = "É a vez do jogador " + players[currentPlayerIndex].name;
 
-            initializeCanvas();
+            initializeCanvas(players[curretPlayerIndex].color);
         }
 
         function confirmTurn() {
@@ -164,7 +165,7 @@
             document.getElementById("currentPlayerName").textContent = "Jogador: " + players[currentPlayerIndex].name;
 
             document.getElementById("wordToDraw").textContent = "Palavra para desenhar: " + players[currentPlayerIndex].word;
-            initializeCanvas();
+            initializeCanvas(players[currentPlayerIndex].color);
         }
 
         function nextPlayer() {
@@ -241,9 +242,9 @@
                 const playerNameCell = document.createElement("td");
                 playerNameCell.textContent = player.name;
                 row.appendChild(playerNameCell);
-                const colorCell = document.createElement("td");
-                colorCell.textContent = player.color;
-                row.appendChild(colorCell);
+                // const colorCell = document.createElement("td");
+                // colorCell.textContent = player.color;
+                // row.appendChild(colorCell);
                 const wordCell = document.createElement("td");
                 wordCell.textContent = player.word;
                 row.appendChild(wordCell);

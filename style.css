@@ -134,8 +134,8 @@ img {
 
 .gameScreen {
     width: 100%;
-    height: 20vh;
-    height: 20svh;
+    height: 30vh;
+    height: 30svh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -155,7 +155,7 @@ img {
 
 .gameScreen button {
     width: 40%;
-    height: 5vh;
+    height: 8vh;
     margin: 1vh;
     border-radius: 3vw;
     font-weight: bold;
@@ -165,13 +165,29 @@ img {
 
 #initialScreen button {
     width: 40%;
-    height: 5vh;
+    height: 6vh;
     margin: 1vh;
     border-radius: 2vh;
     color: #ffffff;
     font-weight: bold;
-    font-size: 2vh;
+    font-size: 3vh;
     padding: 0;
+}
+
+#resultsScreen h2 {
+    width: 40%;
+    height: 6vh;
+    margin: 1vh;
+    border-radius: 2vh;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 3vh;
+    padding: 0;
+}
+
+#resultsScreen table {
+    color: #ffffff;
+    font-size: 3vh;
 }
 
 button {
@@ -211,11 +227,11 @@ button:active{
     border: 0.5vw solid #fc7a5b;
     color: #372d3e;
     font-weight: bold;
-    height: 5vh;
+    height: 6vh;
     width: 40%;
     margin: 2%;
     margin-top: 4vh;
-    font-size: 2vh;
+    font-size: 3vh;
 }
 
 .gameScreen select {

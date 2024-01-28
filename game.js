@@ -3,7 +3,7 @@ const NUMBER_OF_IMAGES = 12;
 let playerImages = ['', '', '', '', ''];
 
 
-function initializeCanvas() {
+function initializeCanvas(playerColor = '#000000') {
     const canvasArea = document.getElementById('canvasArea');
     const canvasRect = canvasArea.getBoundingClientRect();
 
@@ -71,6 +71,14 @@ function initializeCanvas() {
         const animationWrapper = document.createElement('div');
 
         newShape.src = `img/${newImage}.png`;
+        console.log(playerColor);
+        newShape.style.filter = `
+        opacity(0.2)
+        drop-shadow(0 0 0 ${playerColor})
+        drop-shadow(0 0 0 ${playerColor})
+        drop-shadow(0 0 0 ${playerColor})
+        drop-shadow(0 0 0 ${playerColor})
+        drop-shadow(0 0 0 ${playerColor})`;
         wrapper.className = 'draggable';
         wrapper.draggable = true;
 

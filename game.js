@@ -306,3 +306,5 @@ function popFinalDialog() {
     closeDialog();
     popDialog('HAHAHAHA! Vocês me fazem rir!', 'pudding2.png')
 }
+
+

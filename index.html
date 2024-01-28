@@ -13,14 +13,15 @@
         }
     </style>
     <script src="game.js"></script>
+
 </head>
 
 <body>
     <div id="initialScreen" class="gameScreen">
 
-        <input type="text" id="playerName" placeholder="Enter player name">
-        <button onclick="addPlayer()">Add Player</button>
-        <button onclick="startGame()">Start Game</button>
+        <input type="text" id="playerName" placeholder="Entrar com nome do jogador">
+        <button onclick="addPlayer()">Adicionar Jogador</button>
+        <button onclick="startGame()">Iniciar Jogo</button>
         <div id="playerList">
             <!-- Lista de jogadores será exibida aqui -->
         </div>
@@ -39,7 +40,7 @@
 
             <div id="transitionScreen" class="gameScreen" style="display: none;">
                 <p id="playerTurnMessage"></p>
-                <button onclick="confirmTurn()">Confirm</button>
+                <button onclick="confirmTurn()">Confirmar</button>
             </div>
 
             <div id="currentTurn" class="gameScreen" style="display: none;">
@@ -136,6 +137,8 @@
         }
 
         function startGame() {
+
+
             if (players.length < 3) {
                 alert("Minimum of 3 players required to start the game.");
                 return;

@@ -11,7 +11,6 @@
             font-family: Arial, sans-serif;
             text-align: center;
         }
-
     </style>
     <script src="game.js"></script>
 </head>
@@ -30,7 +29,7 @@
     <div id="gameScreen" style="display: none;">
         <body-wrapper>
             <div id="canvasArea"></div>
-            <div id="shapeDeck">
+            <div id="shapeDeck" style="display: none;">
                 <div id="slot1" class="shapeSlot empty"></div>
                 <div id="slot2" class="shapeSlot empty"></div>
                 <div id="slot3" class="shapeSlot empty"></div>
@@ -53,8 +52,10 @@
                 <select id="playerSelect">
                     <!-- Opções de jogador serão adicionadas aqui -->
                 </select>
-                <button onclick="eliminatePlayer()">Eliminar</button>
-                <button onclick="skipElimination()">Pular</button>
+                <div style="display: flex; flex-direction: row; align-items: center; justify-content: center; width: 100%">
+                <button onclick=" eliminatePlayer()">Eliminar</button>
+                    <button onclick="skipElimination()">Pular</button>
+                </div>
             </div>
 
             <div id="impostorEliminatedScreen" class="gameScreen" style="display: none;">
@@ -155,6 +156,7 @@
             document.getElementById("transitionScreen").style.display = "none";
 
             // Mostra a tela do jogo
+            document.getElementById("shapeDeck").style.display = "flex";
             document.getElementById("currentTurn").style.display = "flex";
             document.getElementById("gameScreen").style.display = "flex";
 
@@ -172,6 +174,7 @@
             if (currentPlayerIndex === 0) {
                 // Todos os jogadores deram "Next", mostra a tela de eliminação
                 document.getElementById("currentTurn").style.display = "none";
+                document.getElementById("shapeDeck").style.display = "none";
                 document.getElementById("eliminationScreen").style.display = "flex";
                 document.getElementById("gameScreen").style.display = "flex";
 
@@ -187,6 +190,7 @@
             } else {
                 // Volta para a tela de transição
                 document.getElementById("currentTurn").style.display = "none";
+                document.getElementById("shapeDeck").style.display = "none";
                 document.getElementById("gameScreen").style.display = "flex";
                 document.getElementById("transitionScreen").style.display = "flex";
                 document.getElementById("playerTurnMessage").textContent = "É a vez do jogador " + players[currentPlayerIndex].name;

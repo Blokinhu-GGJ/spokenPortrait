@@ -77,7 +77,7 @@ function initializeCanvas() {
 
 
         var randomRotation = Math.floor(Math.random() * 360);
-        var randomScale = 0.8 + Math.random() * 0.8; // Adjust the range as needed
+        var randomScale = 0.8 + Math.random() * 0.4; // Adjust the range as needed
 
         newShape.style.transform = 'rotate(' + randomRotation + 'deg) scale(' + randomScale + ')';
         newShape.style.transformOrigin = 'center';
@@ -192,9 +192,20 @@ function initializeCanvas() {
             draggedImage.style.top = pageY - offsetY + 'px';
         }
 
+        function resetPosition(){
+            console.log('Saved!!!!');
+            document.removeEventListener('mouseup', resetPosition);
+            draggedImage.style.position = 'relative';
+            draggedImage.style.left = 0 + 'px';
+            draggedImage.style.top = 0 + 'px';
+            draggedImage.onmouseup = null;
+            document.removeEventListener('mousemove', onMouseMove);
+        }
+    
         function onMouseMove(event) {
             moveAt(event.pageX, event.pageY);
         }
+    
 
         // Move the image on mousemove
         document.addEventListener('mousemove', onMouseMove);
@@ -212,6 +223,7 @@ function initializeCanvas() {
                 // The image is NOT inside the canvas
                 console.log('Image is not inside the canvas');
                 document.removeEventListener('mousemove', onMouseMove);
+                document.removeEventListener('mouseup', resetPosition);
                 draggedImage.style.position = 'relative';
                 draggedImage.style.left = 0 + 'px';
                 draggedImage.style.top = 0 + 'px';
@@ -225,6 +237,7 @@ function initializeCanvas() {
                 console.log('Image left inside canvas');
                 currentTarget.removeEventListener('mousedown', dragAndDropMouseEventListener);
                 draggedImage.removeEventListener('mousedown', dragAndDropMouseEventListener);
+                document.removeEventListener('mouseup', resetPosition);
                 document.removeEventListener('mousemove', onMouseMove);
 
                 draggedImage.onmouseup = null; // Remove the event listener to prevent potential memory leaks
@@ -239,6 +252,7 @@ function initializeCanvas() {
 
             }
         };
+        document.addEventListener('mouseup', resetPosition);
     }
 
 

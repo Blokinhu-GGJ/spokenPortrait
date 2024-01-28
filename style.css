@@ -5,6 +5,10 @@ body {
     width: 100vw;
     width: 100svw;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #372d3e;
 }
 
 body-wrapper {
@@ -28,23 +32,26 @@ body-wrapper {
 
 #shapeDeck {
     display: flex;
-    width: 96svw;
+    width: 96%;
     justify-content: space-between;
-    height: 18vw;
     margin-bottom: 1vw;
     margin-top: 1vw;
-
-    background-color: lightblue;
+    gap: 2%;
+    background-color: #372d3e;
 }
 
 .shapeSlot {
-    border: 0.5vw solid #000;
-    box-shadow: inset 0 0 5px #000000;
-    border-radius: 5%;
-    width: 18vw;
-    height: 18vw;
-    background-color: lightblue;
+    flex: 1 0 0;
+    aspect-ratio: 1;
+
+    border-radius: 3vw;
+    background-color: #9ec9ff;
     overflow: hidden;
+
+    border-top: 0.5vw solid #92c0f2;
+    border-left: 0.5vw solid #92c0f2;
+    border-right: 0.5vw solid #83a5ee;
+    border-bottom: 0.5vw solid #83a5ee;
 }
 
 @keyframes smoothSwing {
@@ -65,8 +72,8 @@ body-wrapper {
 
 img {
     touch-action: none;
-    width: 18vw;
-    height: 18vw;
+    width: 10vh;
+    height: 10vh;
     filter:
         opacity(0.2)
         /* To apply the color all over the image */
@@ -88,8 +95,6 @@ img {
     align-items: center;
     justify-content: center;
     touch-action: none;
-    width: 18vw;
-    height: 18vw;
 }
 
 .animation-wrapper {
@@ -106,27 +111,26 @@ img {
 }
 
 #canvasArea {
+    height: 60vh;
+    max-height: 60vh;
+    flex-grow: 0;
+    width: 96%;
     box-sizing: border-box;
     border: 0.5vw solid #000;
-    box-shadow: inset 0 0 5px #000000;
-    border-radius: 2%;
-    width: 96vw;
-    width: 96svw;
-    height: 50vh;
-    height: 50vh;
-    background-color: azure;
+    border-radius: 2vw;
+    background-color: #fcebd7;
     overflow: hidden;
+
+    border-top: 0.5vw solid #fefefd;
+    border-left: 0.5vw solid #fefefd;
+    border-right: 0.5vw solid #fc7a5b;
+    border-bottom: 0.5vw solid #fc7a5b;
 }
 
 #gameSection {
     background-color: azure;
 }
 
-
-
-#initialScreen button {
-    width: 40vw;
-}
 
 .gameScreen {
     width: 100%;
@@ -136,12 +140,13 @@ img {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    font-size: 150%;
 }
 
 #initialScreen {
     width: 100%;
     height: 100%;
-    background-color: lightblue;
+    background-color: #372d3e;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -149,30 +154,86 @@ img {
 }
 
 .gameScreen button {
-    width: 40vw;
-    height: 10vw;
-    margin: 2vw;
-    background-color: rgb(157, 198, 212);
-    border: none;
-    border: 0.5vw solid rgb(112, 150, 162);
-    border-radius: 1vw;
-    color: rgb(57, 77, 84);
+    width: 40%;
+    height: 5vh;
+    margin: 1vh;
+    border-radius: 3vw;
     font-weight: bold;
+    font-size: 2vh;
+    padding: 0;
+}
+
+#initialScreen button {
+    width: 40%;
+    height: 5vh;
+    margin: 1vh;
+    border-radius: 2vh;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 2vh;
+    padding: 0;
+}
+
+button {
+    color: #ffffff;
+    background-color: #ffb585;
+    border-top: 0.5vw solid #fefefd;
+    border-left: 0.25vw solid #fefefd;
+    border-right: 0.25vw solid #fc7a5b;
+    border-bottom: 0.5vw solid #fc7a5b;
+}
+
+button:disabled{
+    background-color: #fe8861;
+    border-top: 0.5vw solid #fefefd;
+    border-left: 0.25vw solid #fefefd;
+    border-right: 0.25vw solid #fc7a5b;
+    border-bottom: 0.5vw solid #fc7a5b;
+}
+
+button:hover{
+    background-color: #fe8861;
+    border-top: 0.5vw solid #ffb585;
+    border-left: 0.25vw solid #ffb585;
+    border-right: 0.25vw solid #cb6c4d;
+    border-bottom: 0.5vw solid #cb6c4d;
+}
+
+button:active{
+    background-color: #cb6c4d;
+    border-top: 0.5vw solid #ffb585;
+    border-left: 0.25vw solid #ffb585;
+    border-right: 0.25vw solid #b15f43;
+    border-bottom: 0.5vw solid #b15f43;
 }
 
 .gameScreen input {
-    border: 0.5vw solid rgb(112, 150, 162);
-    color: rgb(57, 77, 84);
+    border: 0.5vw solid #fc7a5b;
+    color: #372d3e;
     font-weight: bold;
-    width: 60vw;
-    margin: 5vw;
-    margin-top: 10vh;
-    font-size: 5vw;
+    height: 5vh;
+    width: 40%;
+    margin: 2%;
+    margin-top: 4vh;
+    font-size: 2vh;
+}
+
+.gameScreen select {
+    border: 0.5vw solid #fc7a5b;
+    color: #372d3e;
+    font-weight: bold;
+    height: 4vh;
+    width: 40%;
+    font-size: 2vh;
     border-radius: 1vw;
 }
 
+p {
+    color: white;
+}
+
 #playerList {
-    margin-top: 5vh;
+    margin-top: 2vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -180,9 +241,25 @@ img {
 }
 
 .gameScreen span {
-    color: rgb(57, 77, 84);
+    color: #ffffff;
     font-weight: bold;
     width: 60vw;
-    font-size: 5vw;
+    font-size: 3vh;
     border-radius: 1vw;
+}
+
+@media screen and (orientation: landscape) {
+    body-wrapper {
+        /* Set the max-width and max-height to the same value to make the element square.
+       The value used here (e.g., 100vh) makes the element's size dependent on the viewport height,
+       ensuring it remains square even when the width exceeds the height. */
+        max-width: 80vh;
+        max-height: 100vh;
+        /* Adjust the width or height if needed to maintain the square shape, depending on your layout requirements */
+    }
+    #initialScreen {
+        max-width: 80vh;
+        max-height: 100vh;
+    }
+    
 }

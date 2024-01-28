@@ -262,7 +262,18 @@ function initializeCanvas(playerColor = '#000000') {
         };
         document.addEventListener('mouseup', resetPosition);
     }
-
+    
+    function game_music() {
+        myAudio.play();
+        if (myAudio.paused == true) {
+            myAudio.play();
+        }
+    }
+    let myAudio = new Audio();
+    
+    myAudio.src = './sound/trilha_initial.mp3';
+    
+    window.onload = setInterval(game_music, 1000 / 10); //10fps
 
     // Prevent default drag behavior
     canvasArea.addEventListener('dragstart', e => {

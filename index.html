@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Impostor Drawing Game</title>
+    <title>Pudinci</title>
     <link rel="stylesheet" href="style.css">
     <style>
         body {
@@ -102,7 +102,7 @@
         <img id="sadPudding" src="img/pudding1.png">
         <div id="dialogTextWrapper">
             <div id="dialogText">
-                Estou tão triste. Preciso de novos amigos que me ajudem a seguir meu sonho de ser um grande
+                Leonardo Pudinci: Estou tão triste. Preciso de novos amigos que me ajudem a seguir meu sonho de ser um grande
                 artista! Vocês poderiam me ajudar com um desenho?
             </div>
             <div style="display: flex; flex-direction: row; align-items: center; justify-content: end;">
@@ -155,7 +155,7 @@
 
 
             if (players.length < 3) {
-                alert("Minimum of 3 players required to start the game.");
+                alert("São necessário 3 jogadores para começar o jogo.");
                 return;
             }
             impostorIndex = Math.floor(Math.random() * players.length);
@@ -260,7 +260,7 @@
                 // Mostra a tela especial para o impostor eliminado
                 document.getElementById("eliminationScreen").style.display = "none";
                 document.getElementById("impostorEliminatedScreen").style.display = "flex";
-                popDialog('Muahahahah! Que desenho horrível! Você achou mesmo que ajudaria?! Vocês são péssimos! Acham mesmo que isso ficou bom?', 'pudding2.png', popFinalDialog);
+                popDialog('Leonardo Pudinci: Muahahahah! Que desenho horrível! Você achou mesmo que ajudaria?! Vocês são péssimos! Acham mesmo que isso ficou bom?', 'pudding2.png', popFinalDialog);
                 document.getElementById("gameScreen").style.display = "flex";
             } else {
                 // Volta para a tela de transição

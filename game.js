@@ -294,7 +294,7 @@ function popDialog(text, figure, buttonFunction = closeDialog) {
 function popFinalDialog() {
     console.log('popped final dialog');
     closeDialog();
-    popDialog('HAHAHAHA! Vocês me fazem rir!', 'pudding2.png')
+    popDialog('Leonardo Pudinci: HAHAHAHA! Vocês me fazem rir!', 'pudding2.png')
 }
 
 

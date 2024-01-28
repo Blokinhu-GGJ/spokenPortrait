@@ -127,17 +127,33 @@
             impostorIndex = Math.floor(Math.random() * players.length);
             players[impostorIndex].impostor = true;
 
-            // Define a palavra para desenhar
-            let words = ["Gato","Cachorro","Melancia", "Peixe", "Espinafre", "Cenoura", "Pepino", "Pêssego", "Água", "Pássaro", "Papel", "Camarão", "Batata", "Polvo", "Bronze", "Ouro", "Whisky", "Lua", "Vidro", "Esmeralda", "Urso", "Alho", "Safira", "Refrigerante", "Tigre", "Rubi", "Couro", "Pedra", "Diamante", "Frango", "Golfinho", "Baleia", "Fogo", "Brócolis", "Fruta", "Cereja", "Iogurte", "Carne", "Tecido", "Macaco", "Café", "Ovo", "Manga", "Peixe", "Céu", "Prata", "Floresta", "Alga", "Banana", "Uva", "Areia", "Sol", "Leite", "Tubarão", "Vinho", "Rum", "Montanha", "Zebra", "Cebola", "Terra", "Flor", "Leão", "Leite", "Pérola", "Pinguim", "Caranguejo", "Cerveja", "Feijão", "Abacaxi", "Vento", "Queijo", "Metal", "Laranja", "Cavalo", "Plástico", "Girafa", "Amor", "Estrela", "Suco", "Tequila", "Gato", "Mar", "Cachorro", "Coral", "Chá", "Alface", "Árvore", "Elefante", "Maçã", "Neve", "Vaca", "Morango", "Vodka", "Ar", "Lagosta", "Madeira", "Pão", "Cogumelo", "Tomate", "Chuva", "Arroz", "Rio"];
+            // Lista de palavras
+            let words = ["Gato", "Cachorro", "Melancia", "Peixe", "Espinafre", "Cenoura", "Pepino", "Pêssego", "Água", "Pássaro", "Papel", "Camarão", "Batata", "Polvo", "Bronze", "Ouro", "Whisky", "Lua", "Vidro", "Esmeralda", "Urso", "Alho", "Safira", "Refrigerante", "Tigre", "Rubi", "Couro", "Pedra", "Diamante", "Frango", "Golfinho", "Baleia", "Fogo", "Brócolis", "Fruta", "Cereja", "Iogurte", "Carne", "Tecido", "Macaco", "Café", "Ovo", "Manga", "Peixe", "Céu", "Prata", "Floresta", "Alga", "Banana", "Uva", "Areia", "Sol", "Leite", "Tubarão", "Vinho", "Rum", "Montanha", "Zebra", "Cebola", "Terra", "Flor", "Leão", "Leite", "Pérola", "Pinguim", "Caranguejo", "Cerveja", "Feijão", "Abacaxi", "Vento", "Queijo", "Metal", "Laranja", "Cavalo", "Plástico", "Girafa", "Amor", "Estrela", "Suco", "Tequila", "Gato", "Mar", "Cachorro", "Coral", "Chá", "Alface", "Árvore", "Elefante", "Maçã", "Neve", "Vaca", "Morango", "Vodka", "Ar", "Lagosta", "Madeira", "Pão", "Cogumelo", "Tomate", "Chuva", "Arroz", "Rio"];
 
-            players.map(player => {
+            // Função para gerar um número aleatório dentro do intervalo do tamanho da lista
+            function getRandomWord(excludeWord) {
+                let randomWord;
+                do {
+                    randomWord = words[Math.floor(Math.random() * words.length)];
+                } while (randomWord === excludeWord);
+                return randomWord;
+            }
+
+            // Seleciona duas palavras aleatórias únicas
+            let impostorWord = getRandomWord();
+            let otherPlayersWord = getRandomWord(impostorWord);
+
+            // Atribui as palavras aos jogadores
+            players.forEach(player => {
                 if (player.impostor) {
-                    player.word = words[1]
+                    player.word = impostorWord; // Palavra aleatória para o impostor
                 } else {
-                    player.word = words[0]
+                    player.word = otherPlayersWord; // Palavra aleatória diferente para os outros jogadores
                 }
-                return player
             });
+
+
+
 
             originalPlayers = [...players]
 

@@ -339,4 +339,6 @@ p {
 #dialogText {
     color: #372d3e;
     padding-bottom: 1vh;
+    font-size: 3vh;
+    font-size: 3svh;
 }

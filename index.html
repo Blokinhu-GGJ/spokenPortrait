@@ -198,6 +198,7 @@
             document.getElementById("transitionScreen").style.display = "flex";
             document.getElementById("gameScreen").style.display = "flex";
             document.getElementById("playerTurnMessage").textContent = "É a vez do jogador " + players[currentPlayerIndex].name;
+            
 
             initializeCanvas('#000000');
         }
@@ -267,7 +268,7 @@
                 document.getElementById("eliminationScreen").style.display = "none";
                 document.getElementById("transitionScreen").style.display = "flex";
                 document.getElementById("gameScreen").style.display = "flex";
-                document.getElementById("playerTurnMessage").textContent = "Jogador eliminado!";
+                document.getElementById("playerTurnMessage").textContent = "Jogador eliminado!" + "É a vez do jogador " + players[currentPlayerIndex].name;
             }
 
             // Reinicia o índice do jogador atual se necessário

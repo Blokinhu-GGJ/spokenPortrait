@@ -252,6 +252,7 @@ button:active{
 
 p {
     color: white;
+    font-size: 3vh;
 }
 
 #playerList {
